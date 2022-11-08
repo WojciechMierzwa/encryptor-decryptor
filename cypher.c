@@ -72,6 +72,8 @@ int main()
 	flag=0;
 	if(flag==2);
 	flag=0;
+	if(flag==3);
+	flag=0;
 
 	if(flag)
 	{
@@ -84,6 +86,8 @@ int main()
 			if(choice==0)
 			break;
 			if(choice==2)
+			break;
+			if(choice==3)
 			break;
 		}
 	}
@@ -101,6 +105,27 @@ int main()
 	{
 		atbashCipher(message);
 	}
+	if(choice==3) //afine cipher encryptor + problem with x,y,z
+	{
+		int i;
+		int a,b,f;
+		scanf("%d",&a);
+		scanf("%d",&b);
+		for(i=0; i<strlen(message); i++)
+		{
+			temp=("%d", *(message+i)); //variable that contains ASCII number of message[i]
+			if(temp==32)
+			printf(" ");
+			else
+			{
+			f=(a*(temp-96)+b)%26;
+			temp=97+f-a;	
+			printf("%c", temp);
+				
+			}
+		}
+	}
+
 	
 	free(message); 
 	return 0;
