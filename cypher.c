@@ -2,6 +2,35 @@
 #include <stdlib.h>
 #include <string.h>
 
+void affineCipherDecryptor(char *message)
+{
+	;
+}
+
+void affineCipherEncryptor(char *message)
+{
+		int i;
+		int a,b,f;
+		printf("Insert a:\n");
+		scanf("%d",&a);
+		printf("Insert b:\n");
+		scanf("%d",&b);
+		for(i=0; i<strlen(message); i++)
+		{
+			int temp=("%d", *(message+i)); //variable that contains ASCII number of message[i]
+			if(temp==32)
+			printf(" ");
+			else
+			{
+			f=(a*(temp-97)+b)%26;
+			temp=97+f;	
+			printf("%c", temp);
+				
+			}
+		}
+	
+}
+
 void caesarCipherEncryptor(char *message)
 {
 	int i;
@@ -65,66 +94,29 @@ int main()
 	printf("Please insert message you want to encrypt or decrypt\n");
 	gets(message);
 	printf("\nPress 0 to encrypt in Caesar Cipher \nPress 1 to decrypt in Caesar Cipher\nPress 2 to encrypt/decrypt in Atbash Cipher\n");
+	printf("Press 3 to enrcypt in Affine Cypher\nPress 4 to decrypt in Affine Cipher\n");
 	scanf("%d", &choice);
-	if(flag==1);
-	flag=0;
-	if(flag==0);
-	flag=0;
-	if(flag==2);
-	flag=0;
-	if(flag==3);
-	flag=0;
 
-	if(flag)
+	switch(choice)
 	{
-		while(1)
-		{
-			printf("\nPress 0 to encrypt in Caesar Cipher \nPress 1 to decrypt in Caesar Cipher\nPress 2 to encrypt/decrypt in Atbash Cipher\n");
-			scanf("%d", &choice);
-			if(choice==1)
+		case 0: 
+			caesarCipherEncryptor(message);
 			break;
-			if(choice==0)
+		case 1:
+			caesarCipherDecryptor(message);	
 			break;
-			if(choice==2)
+		case 2:
+			atbashCipher(message);
 			break;
-			if(choice==3)
+		case 3: 
+			affineCipherEncryptor(message);
 			break;
-		}
+		case 4:
+			affineCipherDecryptor(message);
+			break;
 	}
 	
-	if(choice==0) //encryption of Caesar Cipher
-	{
-		caesarCipherEncryptor(message);
-	}
-	
-	if(choice==1) //decryption of Caesar Cipher
-	{
-		caesarCipherDecryptor(message);	
-	}
-	if(choice==2) //atbash cypher, encryption&decryption
-	{
-		atbashCipher(message);
-	}
-	if(choice==3) //afine cipher encryptor + problem with x,y,z
-	{
-		int i;
-		int a,b,f;
-		scanf("%d",&a);
-		scanf("%d",&b);
-		for(i=0; i<strlen(message); i++)
-		{
-			temp=("%d", *(message+i)); //variable that contains ASCII number of message[i]
-			if(temp==32)
-			printf(" ");
-			else
-			{
-			f=(a*(temp-96)+b)%26;
-			temp=97+f-a;	
-			printf("%c", temp);
-				
-			}
-		}
-	}
+
 
 	
 	free(message); 
